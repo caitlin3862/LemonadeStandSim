@@ -7,4 +7,8 @@ public class Player {
         points = 0;
     }
 
+    public void addPoints() {
+        points += 4;
+    }
+
 }

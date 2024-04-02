@@ -1,12 +1,32 @@
 public class Customer {
+    private int[] order;
+    private boolean pink;
+
+    public Customer() {
+        order = new int[4];
+        order[0] = randNum(); // cups
+        order[1] = randNum(); // lemons
+        order[2] = randNum(); // sugar cubes
+        order[3] = randNum(); // ice cubes
+        pink = pinkOrNo();
+    }
+    
+    public int[] getOrder() {
+        return order;
+    }
+
+    public boolean getPink() {
+        return pink;
+    }
 
     public void order(){
+        
         System.out.print("May I get "
-                + randNum() + " cups of Lemonade with "
-                + randNum() + " lemons,"
-                + randNum() + " sugar cubes, "
-                + randNum() + " ice cubes and");
-        if (pinkOrNo()){
+                + order[0] + " cups of Lemonade with "
+                + order[1] + " lemons,"
+                + order[2] + " sugar cubes, "
+                + order[3] + " ice cubes and");
+        if (pink){
             System.out.print(" make that pink please!");
         } else {
             System.out.print(" no pink lemonade, thank you.");
@@ -14,7 +34,7 @@ public class Customer {
     }
 
     public void greeting(){
-        System.out.println("Hello");
+        System.out.println("Hello!");
     }
 
     private int randNum(){
