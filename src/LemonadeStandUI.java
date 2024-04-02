@@ -1,21 +1,21 @@
 public class LemonadeStandUI {
-
-    public void stand(){
+    public void stand() {
         System.out.println();
         System.out.println();
         System.out.println();
-        System.out.println("_------------------------------------------------------------------------------");
-        System.out.println("\\                                                                            /");
-        System.out.println(" \\                                                                          /");
-        System.out.println("  ---------------------------------------------------------------------------");
-        for (int i = 0; i < 15; i++){
-            System.out.println("  |      |                                                        |      |");
+        System.out.println("--------------------------------------------------------------------------------");
+        System.out.println(" \\                                                                            /");
+        System.out.println("  \\                                                                          /");
+        System.out.println("   --------------------------------------------------------------------------");
+        for (int i = 0; i < 15; i++) {
+            System.out.println("   |      |                                                          |      |");
         }
-        System.out.println(" ---------------------------------------------------------------------------");
-        System.out.println("/                                                                          \\");
-        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println("   ---------------------------------------------------------------------------");
+        System.out.println("  /                                                                           \\");
+        System.out.println(" -------------------------------------------------------------------------------");
+    }
 
-
+    public void duck(){
         System.out.println("                  ██████      \n" +
                 "                ██      ██    \n" +
                 "              ██          ██  \n" +
@@ -67,4 +67,57 @@ public class LemonadeStandUI {
 
 
     }
+
+    public void logo(){
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("--------------------------------------------------------------------------------");
+        System.out.println(" \\                                                                            /");
+        System.out.println("  \\                                                                          /");
+        System.out.println("   --------------------------------------------------------------------------");
+        for (int i = 0; i < 7; i++) {
+            System.out.println("   |      |                                                          |      |");
+        }
+        System.out.println("   |      |                Lemonade Stand Simulator : )              |      |");
+        for (int i = 0; i < 7; i++) {
+            System.out.println("   |      |                                                          |      |");
+        }
+        System.out.println("   ---------------------------------------------------------------------------");
+        System.out.println("  /                                                                           \\");
+        System.out.println(" -------------------------------------------------------------------------------");
+
+    }
+
+    public void duckAtStand(){
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("--------------------------------------------------------------------------------");
+        System.out.println(" \\                                                                            /");
+        System.out.println("  \\                                                                          /");
+        System.out.println("   --------------------------------------------------------------------------");
+        System.out.println("   |      |                        ████████                          |      |\n" +
+                "   |      |                    ████        ██▓▓                      |      |          \n" +
+                "   |      |                  ▓▓                ▓▓                    |      |       \n" +
+                "   |      |                 ██                    ██                 |      |   \n" +
+                "   |      |               ▓▓░░                    ░░▓▓               |      |  \n" +
+                "   |      |               ██                        ██               |      |  \n" +
+                "   |      |               ██  ██                ██  ██               |      |  \n" +
+                "   |      |             ▓▓    ░░  ▓▓          ▓▓░░    ▓▓             |      |\n" +
+                "   |      |             ██      ▓▓▓▓        ▓▓██      ██             |      |\n" +
+                "   |      |             ██                            ██             |      | \n" +
+                "   |      |             ██  ░░░░                ░░░░  ██             |      | \n" +
+                "   |      |             ██          ████████          ██             |      | \n" +
+                "   |      |           ██        ████░░░░░░░░████        ██           |      |\n" +
+                "   |      |           ██      ████░░██░░░░██░░████      ██           |      |\n" +
+                "   |      |           ██▒▒░░▓▓▓▓░░░░░░░░░░░░░░░░▓▓▓▓▓▓▓▓██           |      |\n" +
+                "   |      |               ▓▓  ▓▓▓▓████████████▓▓▓▓  ▓▓               |      |\n" +
+                "   |      |               ██  ██                ██  ██               |      |");
+        System.out.println("   ---------------------------------------------------------------------------");
+        System.out.println("  /                                                                           \\");
+        System.out.println(" -------------------------------------------------------------------------------");
+    }
+
+
 }
