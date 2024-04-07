@@ -43,6 +43,7 @@ public class LemonadeStandUX {
                 customer.order();
             } else if (option == 2){
                 System.out.println(enterOrder());
+                player.displayPoints();
             } else if (option == 3){
                 Utility.timedClearScreen(0);
                 inventory.printInventory();
@@ -72,57 +73,59 @@ public class LemonadeStandUX {
         if (enteredCups == customer.getOrder()[0]) {
             numCorrect++;
         } else if (enteredCups > customer.getOrder()[0]){
-           error = "Uh oh! That was too many cups!";
+           error = "Uh oh! That was too many cups! " + "\n";
             System.out.println();
         } else {
-            error = "Uh oh! Not enough cups!";
+            error = "Uh oh! Not enough cups! " + "\n";
             System.out.println();
         }
-        System.out.println("How many lemons?");
+        System.out.println("How many lemons? ");
         int enteredLemons = scan.nextInt();
         if (enteredLemons == customer.getOrder()[1]) {
             numCorrect++;
         } else if (enteredLemons > customer.getOrder()[1]) {
-            error += "Too many lemons...";
+            error += "Too many lemons... " + "\n";
             System.out.println();
         } else {
-            error += "Not enough lemons!";
+            error += "Not enough lemons! " + "\n";
             System.out.println();
         }
-        System.out.println("How many sugar cubes?");
+        System.out.println("How many sugar cubes? ");
         int enteredSugar = scan.nextInt();
         if (enteredSugar == customer.getOrder()[2]) {
             numCorrect++;
         } else if (enteredSugar > customer.getOrder()[2]) {
-            error += "Sugar rush! Way too sweet!";
+            error += "Sugar rush! Way too sweet! " + "\n";
             System.out.println();
         } else {
-            error += "So bitter.. Not enough sugar";
+            error += "So bitter.. Not enough sugar " + "\n";
             System.out.println();
         }
-        System.out.println("How many ice cubes?");
+        System.out.println("How many ice cubes? ");
         int enteredIce = scan.nextInt();
         if (enteredIce == customer.getOrder()[3]) {
             numCorrect++;
         } else if (enteredIce > customer.getOrder()[3]) {
-            error += "B-brr.. Too cold!";
+            error += "B-brr.. Too cold! " + "\n";
             System.out.println();
         } else {
-            error += "Ew! It's so warm..";
+            error += "Ew! It's so warm.. " + "\n";
             System.out.println();
         }
-        System.out.println("Pink lemonade? (Enter yes/no)");
-        String enteredPink = scan.nextLine();
-        if ((enteredPink.equals("yes") && customer.getPink()) || (enteredPink.equals("no") && !(customer.getPink()))) {
+
+        System.out.println("Pink lemonade? (Enter 1 for yes/2 for no)");
+        int enteredPink = scan.nextInt();
+        if ((enteredPink == 1 && customer.getPink()) || (enteredPink == 2 && !(customer.getPink()))) {
             numCorrect++;
-        } else if ((enteredPink.equals("yes") && !(customer.getPink()))) {
-            error += "Why is it pink??";
+            player.addPoints();
+        } else if ((enteredPink == 1 && !(customer.getPink()))) {
+            error += "Why is it pink?? " + "\n";
             System.out.println();
-        } else if ((enteredPink.equals("no") && (customer.getPink()))) {
-            error += "What happened to the pink :(";
+        } else if ((enteredPink == 2 && (customer.getPink()))) {
+            error += "What happened to the pink :( " + "\n";
             System.out.println();
         } else {
-            error += "That wasn't a yes or no...";
+            error += "That wasn't a yes or no..." + "\n";
             System.out.println();
         }
         return error;

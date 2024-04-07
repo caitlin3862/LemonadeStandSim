@@ -11,4 +11,8 @@ public class Player {
         points += 4;
     }
 
+    public void displayPoints() {
+        System.out.println("Current Points: " + points);
+    }
+
 }

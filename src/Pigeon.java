@@ -7,6 +7,7 @@ public class Pigeon extends Customer {
     }
 
     public void pigeonStand(){
+        System.out.println("");
 
     }
 
