@@ -13,4 +13,8 @@ public class Inventory {
         pinkDye = 5;
     }
 
+    public void printInventory(){
+
+    }
+
 }

@@ -27,9 +27,9 @@ public class Customer {
                 + order[2] + " sugar cubes, "
                 + order[3] + " ice cubes and");
         if (pink){
-            System.out.print(" make that pink please!");
+            System.out.print(" make that pink please!\n");
         } else {
-            System.out.print(" no pink lemonade, thank you.");
+            System.out.print(" no pink lemonade, thank you.\n");
         }
     }
 

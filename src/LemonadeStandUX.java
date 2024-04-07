@@ -2,46 +2,50 @@ import java.util.Scanner;
 public class LemonadeStandUX {
     private Scanner scan;
     private LemonadeStandUI ui;
+    private Customer customer;
+    private int numCorrect;
+    private boolean gameOver;
+    private Player player;
     public LemonadeStandUX(){
         scan = new Scanner(System.in);
         ui = new LemonadeStandUI();
+        customer = duckOrPigeon();
+        gameOver = false;
     }
 
     public void start(){
         ui.logo();
-        Utility.timedClearScreen(500);
+        Utility.timedClearScreen(5000);
         System.out.print("Hello! What's your name? ");
         String playerName = scan.nextLine();
         System.out.println("Nice to meet you, " + playerName + ". Thanks for signing up for the job.");
-        Utility.sleep(500);
+        Utility.sleep(2500);
         System.out.println("Let me run through your tasks real quick!");
-        Utility.sleep(500);
+        Utility.sleep(2500);
         System.out.println("So your goal is to serve your customers lemonade.");
-        Utility.sleep(500);
+        Utility.sleep(2500);
         System.out.println("Each customer has different orders so make sure you get them right!");
-        Utility.sleep(500);
-        System.out.println("If you have any questions, just enter in Q!");
-        Utility.sleep(500);
+        Utility.sleep(2500);
         System.out.println("Have fun : )");
-        Utility.timedClearScreen(1500);
-        Player player = new Player(playerName);
+        Utility.timedClearScreen(5000);
+        player = new Player(playerName);
     }
 
     public void play(){
+        start();
         while(!gameOver){
             Inventory inventory = new Inventory();
             customer.greeting();
-            customer.order();
-            System.out.println(enterOrder());
             ui.menu();
             System.out.print("Enter choice: ");
             int option = scan.nextInt();
             if (option == 1){
                 customer.order();
             } else if (option == 2){
-                inventory.printInventory();
+                System.out.println(enterOrder());
             } else if (option == 3){
-                enterOrder();
+                Utility.timedClearScreen(0);
+                inventory.printInventory();
             } else if (option == 4){
                 gameOver = true;
             } else {
@@ -124,7 +128,8 @@ public class LemonadeStandUX {
         return error;
     }
 
+
     private boolean isGameOver(){
-        for (int quan)
+        return false;
     }
 }
