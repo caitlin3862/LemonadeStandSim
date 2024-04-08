@@ -1,6 +1,11 @@
 public class Pigeon extends Customer {
 
     @Override
+    public String getType() {
+        return "Pigeon";
+    }
+
+    @Override
     public void greeting(){
         pigeonStand();
         super.greeting();

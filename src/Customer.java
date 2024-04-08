@@ -1,6 +1,6 @@
 public class Customer {
     private int[] order;
-//    private boolean pink;
+    //    private boolean pink;
 //    private boolean blue;
 //    private boolean regular;
     private String flavor;
@@ -11,22 +11,30 @@ public class Customer {
         order[1] = randNum(); // lemons
         order[2] = randNum(); // sugar cubes
         order[3] = randNum(); // ice cubes
-        pink = false;
-        blue = false;
-        regular = false;
+//        pink = false;
+//        blue = false;
+//        regular = false;
+        flavor = pinkOrBlue();
     }
-    
+
+    public String getType() {
+        return "Customer";
+    }
     public int[] getOrder() {
         return order;
     }
 
-    public boolean getPink() {
-        return pink;
+    public String getFlavor() {
+        return flavor;
     }
 
-    public boolean getBlue() { return blue; }
-
-    public boolean getRegular() { return regular; }
+//    public boolean getPink() {
+//        return pink;
+//    }
+//
+//    public boolean getBlue() { return blue; }
+//
+//    public boolean getRegular() { return regular; }
 
     public void order(){
         System.out.print("May I get "
@@ -52,11 +60,12 @@ public class Customer {
         return (int) (Math.random()*4) + 1;
     }
 
-    private void pinkOrBlue() {
-        if (randNum() > 0.6) {
-            pink = true;
-        } else if (randNum() > 0.3) {
-            blue = true;
+    private String pinkOrBlue() {
+        int num = (int)(Math.random() * 3) + 1;
+        if (num == 1) {
+            return "pink";
+        } else if (num == 2) {
+            return "blue";
         } else {
             return "regular";
         }

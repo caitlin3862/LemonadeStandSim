@@ -46,34 +46,43 @@ class Inventory {
 //        }
     }
 
-    public void updateInventory(String ingredient, int quantity) {
-        if (ingredient.equals("Cups")) {
+    public void updateInventory(String ingredient, int quantity, Player player) {
+        if (ingredient.equals("cups")) {
             for (int i = 0; i < stock.length; i++) {
                 stock[i][0] += quantity;
 
                 if (stock[i][0] < 0) {
-                    stock[i][0] = 0;
+                    System.out.println("You've run out of cups! Refill for $2");
+                    // figure out how to subtract player money
+                    player.addMoney(-2);
+                    stock[i][0] += 5;
                 }
             }
-        } else if (ingredient.equals("Lemons")) {
+        } else if (ingredient.equals("lemons")) {
             for (int i = 0; i < stock.length; i++) {
                 stock[i][1] += quantity;
                 if (stock[i][1] < 0) {
-                    stock[i][1] = 0;
+                    System.out.println("You've run out of lemons! Refill for $5");
+                    stock[i][1] += 10;
+                    player.addMoney(-5);
                 }
             }
-        } else if (ingredient.equals("Sugar Cubes")) {
+        } else if (ingredient.equals("sugar cubes")) {
             for (int i = 0; i < stock.length; i++) {
                 stock[i][2] += quantity;
                 if (stock[i][2] < 0) {
-                    stock[i][2] = 0;
+                    System.out.println("You've run out of sugar cubes! Refill for $4");
+                    stock[i][2] += 10;
+                    player.addMoney(-4);
                 }
             }
-        } else if (ingredient.equals("Ice Cubes")) {
+        } else if (ingredient.equals("ice cubes")) {
             for (int i = 0; i < stock.length; i++) {
                 stock[i][3] += quantity;
                 if (stock[i][3] < 0) {
-                    stock[i][3] = 0;
+                    System.out.println("You've run out of ice cubes! Refill for $3");
+                    stock[i][3] += 10;
+                    player.addMoney(-3);
                 }
             }
         }
