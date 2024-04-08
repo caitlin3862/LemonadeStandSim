@@ -1,9 +1,9 @@
 public class Customer {
     private int[] order;
-    private boolean pink;
-    private boolean blue;
-
-    private boolean regular;
+//    private boolean pink;
+//    private boolean blue;
+//    private boolean regular;
+    private String flavor;
 
     public Customer() {
         order = new int[4];
@@ -29,20 +29,20 @@ public class Customer {
     public boolean getRegular() { return regular; }
 
     public void order(){
-        pinkOrBlue();
         System.out.print("May I get "
                 + order[0] + " cups of Lemonade with "
-                + order[1] + " lemons,"
+                + order[1] + " lemons, "
                 + order[2] + " sugar cubes, "
                 + order[3] + " ice cubes and");
-        if (pink) {
+        if (flavor.equals("pink")) {
             System.out.print(" make that pink please!\n");
-        } else if (blue) {
+        } else if (flavor.equals("blue")) {
             System.out.println(" make that blue please!\n");
         } else {
             System.out.print(" regular lemonade, thank you.\n");
         }
     }
+
 
     public void greeting(){
         System.out.print("Hello! ");
@@ -58,7 +58,7 @@ public class Customer {
         } else if (randNum() > 0.3) {
             blue = true;
         } else {
-        regular = true;
+            return "regular";
         }
     }
 

@@ -7,6 +7,7 @@ public class LemonadeStandUX {
     private boolean gameOver;
     private Player player;
     private Inventory inventory;
+
     public LemonadeStandUX(){
         scan = new Scanner(System.in);
         ui = new LemonadeStandUI();
@@ -30,11 +31,11 @@ public class LemonadeStandUX {
         System.out.println("Have fun : )");
         Utility.timedClearScreen(5000);
         player = new Player(playerName);
+       // Customer customer = duckOrPigeon();
+        play(duckOrPigeon());
     }
 
-    public void play(){
-        start();
-        Customer customer = duckOrPigeon();
+    public void play(Customer customer){
         customerList.add(customer);
         customer.greeting();
         Utility.timedClearScreen(4000);
@@ -47,6 +48,7 @@ public class LemonadeStandUX {
                 Utility.timedClearScreen(1000);
                 printStand(customer);
                 customer.order();
+                Utility.timedClearScreen(6000);
             } else if (option == 2){
                 Utility.timedClearScreen(1000);
                 System.out.println(enterOrder());
@@ -140,6 +142,18 @@ public class LemonadeStandUX {
         return error;
     }
 
+    private Customer duckOrPigeon(){
+        int num = (int) (Math.random()*2)+1;
+        if (num == 1){
+            Customer duck = new Duck();
+            customerList.add(duck); // adds duck to customer array list
+            return duck;
+        } else {
+            Customer pigeon = new Pigeon();
+            customerList.add(pigeon); // adds pigeon to customer array list
+            return pigeon;
+        }
+    }
 
     private boolean isGameOver(){
         return false;

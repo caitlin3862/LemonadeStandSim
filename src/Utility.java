@@ -9,6 +9,8 @@ public class Utility {
     public static final String PURPLE = "\033[0;35m";  // PURPLE
     public static final String CYAN = "\033[0;36m";    // CYAN
     public static final String PINK = "\033[38;5;211m"; // PINK
+
+
     public static void sleep(int milliseconds){
         try {
             Thread.sleep(milliseconds);
