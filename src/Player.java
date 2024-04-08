@@ -6,7 +6,7 @@ public class Player {
     public Player(String name){
         this.name = name;
         points = 0;
-        money = 20.0;
+        money = 0.0;
     }
 
     public double getMoney(){

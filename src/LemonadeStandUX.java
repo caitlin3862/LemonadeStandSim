@@ -66,7 +66,11 @@ public class LemonadeStandUX {
                 player.displayPoints();
                 System.out.println("Current Money: " + player.getMoney());
                 isGameOver();
-                customer = duckOrPigeon(); // finishes order and new customer comes
+                if (!gameOver) {
+                    customer = duckOrPigeon(); // finishes order and new customer comes
+                    customer.greeting();
+                    Utility.timedClearScreen(4000);
+                }
                 Utility.sleep(6000);
             } else if (option == 3){
                 Utility.timedClearScreen(0);
