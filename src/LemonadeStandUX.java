@@ -17,10 +17,6 @@ public class LemonadeStandUX {
         customerList = new ArrayList<Customer>();
     }
 
-    public Player getPlayer() {
-        return player;
-    }
-
     public void start(){
         ui.logo();
         Utility.timedClearScreen(5000);
@@ -37,12 +33,10 @@ public class LemonadeStandUX {
         System.out.println("Have fun : )");
         Utility.timedClearScreen(5000);
         player = new Player(playerName);
-        // Customer customer = duckOrPigeon();
         play(duckOrPigeon());
     }
 
     public void play(Customer customer){
-        customerList.add(customer);
         customer.greeting();
         Utility.timedClearScreen(4000);
         while(!gameOver){
@@ -64,7 +58,7 @@ public class LemonadeStandUX {
                 player.addMoney(numCorrect * 2);
                 numCorrect = 0;
                 player.displayPoints();
-                System.out.println("Current Money: " + player.getMoney());
+                System.out.println("Current Money: $" + player.getMoney());
                 isGameOver();
                 if (!gameOver) {
                     customer = duckOrPigeon(); // finishes order and new customer comes
@@ -115,7 +109,7 @@ public class LemonadeStandUX {
             error = "Uh oh! Not enough cups! " + "\n";
             System.out.println();
         }
-        inventory.updateInventory("cups", -enteredCups, player);
+        inventory.updateInventory(enteredType,"cups", -enteredCups, player);
         System.out.println("How many lemons? ");
         int enteredLemons = scan.nextInt();
         if (enteredLemons == c.getOrder()[1]) {
@@ -128,7 +122,7 @@ public class LemonadeStandUX {
             error += "Not enough lemons! " + "\n";
             System.out.println();
         }
-        inventory.updateInventory("lemons", -enteredLemons, player);
+        inventory.updateInventory(enteredType,"lemons", -enteredLemons, player);
         System.out.println("How many sugar cubes? ");
         int enteredSugar = scan.nextInt();
         if (enteredSugar == c.getOrder()[2]) {
@@ -141,7 +135,7 @@ public class LemonadeStandUX {
             error += "So bitter.. Not enough sugar " + "\n";
             System.out.println();
         }
-        inventory.updateInventory("sugar cubes", -enteredSugar, player);
+        inventory.updateInventory(enteredType,"sugar cubes", -enteredSugar, player);
         System.out.println("How many ice cubes? ");
         int enteredIce = scan.nextInt();
         if (enteredIce == c.getOrder()[3]) {
@@ -154,7 +148,7 @@ public class LemonadeStandUX {
             error += "Ew! It's so warm.. " + "\n";
             System.out.println();
         }
-        inventory.updateInventory("ice cubes", -enteredIce, player);
+        inventory.updateInventory(enteredType,"ice cubes", -enteredIce, player);
         return error;
     }
 
