@@ -42,13 +42,16 @@ public class LemonadeStandUX {
             System.out.print("Enter choice: ");
             int option = scan.nextInt();
             if (option == 1){
+                Utility.timedClearScreen(1000);
                 customer.order();
             } else if (option == 2){
+                Utility.timedClearScreen(1000);
                 System.out.println(enterOrder());
                 player.displayPoints();
             } else if (option == 3){
                 Utility.timedClearScreen(0);
                 inventory.printInventory();
+
             } else if (option == 4){
                 gameOver = true;
             } else {

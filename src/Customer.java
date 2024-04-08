@@ -45,7 +45,7 @@ public class Customer {
     }
 
     public void greeting(){
-        System.out.println("Hello!");
+        System.out.print("Hello! ");
     }
 
     private int randNum(){
