@@ -15,23 +15,23 @@ public class Duck extends Customer {
         System.out.println(" \\                                                                            /");
         System.out.println("  \\                                                                          /");
         System.out.println("   --------------------------------------------------------------------------");
-        System.out.println("   |      |                        ████████                          |      |\n" +
-                "   |      |                    ████        ██▓▓                      |      |          \n" +
-                "   |      |                  ▓▓                ▓▓                    |      |       \n" +
-                "   |      |                 ██                    ██                 |      |   \n" +
-                "   |      |               ▓▓░░                    ░░▓▓               |      |  \n" +
-                "   |      |               ██                        ██               |      |  \n" +
-                "   |      |               ██  ██                ██  ██               |      |  \n" +
-                "   |      |             ▓▓    ░░  ▓▓          ▓▓░░    ▓▓             |      |\n" +
-                "   |      |             ██      ▓▓▓▓        ▓▓██      ██             |      |\n" +
-                "   |      |             ██                            ██             |      | \n" +
-                "   |      |             ██  ░░░░                ░░░░  ██             |      | \n" +
-                "   |      |             ██          ████████          ██             |      | \n" +
-                "   |      |           ██        ████░░░░░░░░████        ██           |      |\n" +
-                "   |      |           ██      ████░░██░░░░██░░████      ██           |      |\n" +
-                "   |      |           ██▒▒░░▓▓▓▓░░░░░░░░░░░░░░░░▓▓▓▓▓▓▓▓██           |      |\n" +
-                "   |      |               ▓▓  ▓▓▓▓████████████▓▓▓▓  ▓▓               |      |\n" +
-                "   |      |               ██  ██                ██  ██               |      |");
+        System.out.println("   |      |" + Utility.YELLOW+"                        ████████" + Utility.RESET + "                          |      |\n" +
+                "   |      |" + Utility.YELLOW+ "                    ████        ██▓▓ " + Utility.RESET + "                     |      |          \n" +
+                "   |      |" + Utility.YELLOW + "                  ▓▓                ▓▓ " + Utility.RESET + "                   |      |       \n" +
+                "   |      |" + Utility.YELLOW + "                 ██                    ██ " + Utility.RESET + "                |      |   \n" +
+                "   |      |" + Utility.YELLOW + "               ▓▓░░                    ░░▓▓ " + Utility.RESET + "              |      |  \n" +
+                "   |      |" + Utility.YELLOW + "               ██                        ██ " + Utility.RESET + "              |      |  \n" +
+                "   |      |" + Utility.YELLOW + "               ██  ██                ██  ██   " + Utility.RESET + "            |      |  \n" +
+                "   |      |" + Utility.YELLOW + "             ▓▓    ░░  ▓▓          ▓▓░░    ▓▓   " + Utility.RESET + "          |      |\n" +
+                "   |      |" + Utility.YELLOW + "             ██      ▓▓▓▓        ▓▓██      ██    " + Utility.RESET + "         |      |\n" +
+                "   |      |" + Utility.YELLOW + "             ██                            ██    " + Utility.RESET + "         |      | \n" +
+                "   |      |" + Utility.YELLOW + "             ██  ░░░░                ░░░░  ██    " + Utility.RESET + "         |      | \n" +
+                "   |      |" + Utility.YELLOW + "             ██          ████████          ██    " + Utility.RESET + "         |      | \n" +
+                "   |      |" + Utility.YELLOW + "           ██        ████░░░░░░░░████        ██   " + Utility.RESET + "        |      |\n" +
+                "   |      |" + Utility.YELLOW + "           ██      ████░░██░░░░██░░████      ██   " + Utility.RESET + "        |      |\n" +
+                "   |      |" + Utility.YELLOW + "           ██▒▒░░▓▓▓▓░░░░░░░░░░░░░░░░▓▓▓▓▓▓▓▓██    " + Utility.RESET + "       |      |\n" +
+                "   |      |" + Utility.YELLOW + "               ▓▓  ▓▓▓▓████████████▓▓▓▓  ▓▓        " + Utility.RESET + "       |      |\n" +
+                "   |      |" + Utility.YELLOW + "               ██  ██                ██  ██        " + Utility.RESET + "       |      |");
         System.out.println("   ---------------------------------------------------------------------------");
         System.out.println("  /                                                                           \\");
         System.out.println(" -------------------------------------------------------------------------------");
