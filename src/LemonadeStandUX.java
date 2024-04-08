@@ -6,11 +6,13 @@ public class LemonadeStandUX {
     private int numCorrect;
     private boolean gameOver;
     private Player player;
+    private Inventory inventory;
     public LemonadeStandUX(){
         scan = new Scanner(System.in);
         ui = new LemonadeStandUI();
         customer = duckOrPigeon();
         gameOver = false;
+        inventory = new Inventory();
     }
 
     public void start(){
@@ -68,6 +70,23 @@ public class LemonadeStandUX {
     private String enterOrder() {
         String error = "";
         System.out.println("Complete the order!");
+        System.out.println("What kind of lemonade?? (Enter 1 for regular/2 for pink/3 for blue)");
+        int enteredType = scan.nextInt();
+        if ((enteredType == 1 && customer.getRegular()) || (enteredType == 2 && (customer.getPink())) || (enteredType == 3 && (customer.getBlue()))) {
+            numCorrect++;
+            player.addPoints();
+        } else if ((enteredType == 2 && !(customer.getPink()))) {
+            error += "Why is it pink?? " + "\n";
+            System.out.println();
+        } else if ((enteredType == 1 && !(customer.getRegular()))) {
+            error += "What happened to my flavor :( " + "\n";
+            System.out.println();
+        } else if ((enteredType == 3 && !(customer.getBlue()))) {
+            error += "Why is it blue??" + "\n";
+        } else {
+            error += "That wasn't a yes or no..." + "\n";
+            System.out.println();
+        }
         System.out.println("How many cups?");
         int enteredCups = scan.nextInt();
         if (enteredCups == customer.getOrder()[0]) {
@@ -113,21 +132,6 @@ public class LemonadeStandUX {
             System.out.println();
         }
 
-        System.out.println("Pink lemonade? (Enter 1 for yes/2 for no)");
-        int enteredPink = scan.nextInt();
-        if ((enteredPink == 1 && customer.getPink()) || (enteredPink == 2 && !(customer.getPink()))) {
-            numCorrect++;
-            player.addPoints();
-        } else if ((enteredPink == 1 && !(customer.getPink()))) {
-            error += "Why is it pink?? " + "\n";
-            System.out.println();
-        } else if ((enteredPink == 2 && (customer.getPink()))) {
-            error += "What happened to the pink :( " + "\n";
-            System.out.println();
-        } else {
-            error += "That wasn't a yes or no..." + "\n";
-            System.out.println();
-        }
         return error;
     }
 
