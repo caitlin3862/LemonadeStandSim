@@ -23,6 +23,7 @@ class Inventory {
         String[] ingredients = {"Cups", "Lemons", "Sugar Cubes", "Ice Cubes"};
 
         System.out.println("Inventory:");
+        System.out.println();
         printColors();
         System.out.print("What flavor inventory do you want to see? (Enter number) ");
         int flavor = scan.nextInt();
@@ -35,6 +36,7 @@ class Inventory {
         } else {
             System.out.println("Please enter a valid number!");
         }
+        Utility.sleep(6000);
 //        for (int i = 0; i < stock.length; i++) {
 //            System.out.println(flavors[i] + ":");
 //            for (int j = 0; j < stock[i].length; j++) {

@@ -10,7 +10,6 @@ public class LemonadeStandUX {
     public LemonadeStandUX(){
         scan = new Scanner(System.in);
         ui = new LemonadeStandUI();
-        customer = duckOrPigeon();
         gameOver = false;
         inventory = new Inventory();
     }
@@ -35,14 +34,18 @@ public class LemonadeStandUX {
 
     public void play(){
         start();
+        Customer customer = duckOrPigeon();
+        customerList.add(customer);
+        customer.greeting();
+        Utility.timedClearScreen(4000);
         while(!gameOver){
-            Inventory inventory = new Inventory();
-            customer.greeting();
+            printStand(customer);
             ui.menu();
             System.out.print("Enter choice: ");
             int option = scan.nextInt();
             if (option == 1){
                 Utility.timedClearScreen(1000);
+                printStand(customer);
                 customer.order();
             } else if (option == 2){
                 Utility.timedClearScreen(1000);
@@ -51,7 +54,6 @@ public class LemonadeStandUX {
             } else if (option == 3){
                 Utility.timedClearScreen(0);
                 inventory.printInventory();
-
             } else if (option == 4){
                 gameOver = true;
             } else {
@@ -70,21 +72,21 @@ public class LemonadeStandUX {
         }
     }
 
-    private String enterOrder() {
+    private String enterOrder(Customer c) {
         String error = "";
         System.out.println("Complete the order!");
         System.out.println("What kind of lemonade?? (Enter 1 for regular/2 for pink/3 for blue)");
         int enteredType = scan.nextInt();
-        if ((enteredType == 1 && customer.getRegular()) || (enteredType == 2 && (customer.getPink())) || (enteredType == 3 && (customer.getBlue()))) {
+        if ((enteredType == 1 && c.getRegular()) || (enteredType == 2 && (c.getPink())) || (enteredType == 3 && (c.getBlue()))) {
             numCorrect++;
             player.addPoints();
-        } else if ((enteredType == 2 && !(customer.getPink()))) {
+        } else if ((enteredType == 2 && !(c.getPink()))) {
             error += "Why is it pink?? " + "\n";
             System.out.println();
-        } else if ((enteredType == 1 && !(customer.getRegular()))) {
+        } else if ((enteredType == 1 && !(c.getRegular()))) {
             error += "What happened to my flavor :( " + "\n";
             System.out.println();
-        } else if ((enteredType == 3 && !(customer.getBlue()))) {
+        } else if ((enteredType == 3 && !(c.getBlue()))) {
             error += "Why is it blue??" + "\n";
         } else {
             error += "That wasn't a yes or no..." + "\n";
@@ -92,7 +94,7 @@ public class LemonadeStandUX {
         }
         System.out.println("How many cups?");
         int enteredCups = scan.nextInt();
-        if (enteredCups == customer.getOrder()[0]) {
+        if (enteredCups == c.getOrder()[0]) {
             numCorrect++;
         } else if (enteredCups > customer.getOrder()[0]){
            error = "Uh oh! That was too many cups! " + "\n";
@@ -103,7 +105,7 @@ public class LemonadeStandUX {
         }
         System.out.println("How many lemons? ");
         int enteredLemons = scan.nextInt();
-        if (enteredLemons == customer.getOrder()[1]) {
+        if (enteredLemons == c.getOrder()[1]) {
             numCorrect++;
         } else if (enteredLemons > customer.getOrder()[1]) {
             error += "Too many lemons... " + "\n";
@@ -114,7 +116,7 @@ public class LemonadeStandUX {
         }
         System.out.println("How many sugar cubes? ");
         int enteredSugar = scan.nextInt();
-        if (enteredSugar == customer.getOrder()[2]) {
+        if (enteredSugar == c.getOrder()[2]) {
             numCorrect++;
         } else if (enteredSugar > customer.getOrder()[2]) {
             error += "Sugar rush! Way too sweet! " + "\n";
@@ -125,7 +127,7 @@ public class LemonadeStandUX {
         }
         System.out.println("How many ice cubes? ");
         int enteredIce = scan.nextInt();
-        if (enteredIce == customer.getOrder()[3]) {
+        if (enteredIce == c.getOrder()[3]) {
             numCorrect++;
         } else if (enteredIce > customer.getOrder()[3]) {
             error += "B-brr.. Too cold! " + "\n";
@@ -142,4 +144,13 @@ public class LemonadeStandUX {
     private boolean isGameOver(){
         return false;
     }
+
+    private void printStand(Customer c){
+        if(c instanceof Duck){
+            ((Duck) c).duckStand();
+        } else {
+            ((Pigeon) c).pigeonStand();
+        }
+    }
+
 }
