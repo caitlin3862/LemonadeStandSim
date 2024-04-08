@@ -6,6 +6,7 @@ public class Player {
     public Player(String name){
         this.name = name;
         points = 0;
+        money = 20.0;
     }
 
     public double getMoney(){
@@ -20,13 +21,6 @@ public class Player {
         money += amt;
     }
 
-    public void spendMoney(double amt){
-        if(money - amt >= 0){
-            money -= amt;
-        } else {
-            System.out.println("You don't have enough money! ");
-        }
-    }
 
     public void displayPoints() {
         System.out.println("Current Points: " + points);

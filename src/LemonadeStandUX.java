@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 public class LemonadeStandUX {
     private Scanner scan;
     private LemonadeStandUI ui;
-    private Customer customer;
+    private ArrayList<Customer> customerList;
     private int numCorrect;
     private boolean gameOver;
     private Player player;
@@ -13,6 +14,11 @@ public class LemonadeStandUX {
         ui = new LemonadeStandUI();
         gameOver = false;
         inventory = new Inventory();
+        customerList = new ArrayList<Customer>();
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 
     public void start(){
@@ -31,7 +37,7 @@ public class LemonadeStandUX {
         System.out.println("Have fun : )");
         Utility.timedClearScreen(5000);
         player = new Player(playerName);
-       // Customer customer = duckOrPigeon();
+        // Customer customer = duckOrPigeon();
         play(duckOrPigeon());
     }
 
@@ -51,8 +57,17 @@ public class LemonadeStandUX {
                 Utility.timedClearScreen(6000);
             } else if (option == 2){
                 Utility.timedClearScreen(1000);
-                System.out.println(enterOrder());
+                printStand(customer);
+                System.out.println(enterOrder(customer));
+                System.out.println("You got " + numCorrect + " / 5 of the order right!");
+                System.out.println("You've earned " + numCorrect * 2 + " dollars!");
+                player.addMoney(numCorrect * 2);
+                numCorrect = 0;
                 player.displayPoints();
+                System.out.println("Current Money: " + player.getMoney());
+                isGameOver();
+                customer = duckOrPigeon(); // finishes order and new customer comes
+                Utility.sleep(6000);
             } else if (option == 3){
                 Utility.timedClearScreen(0);
                 inventory.printInventory();
@@ -62,16 +77,6 @@ public class LemonadeStandUX {
                 System.out.println("Enter a valid number please!");
             }
         }
-        System.out.println("You got " + numCorrect + " // 5 of the order right!");
-    }
-
-    private Customer duckOrPigeon(){
-        int num = (int) (Math.random()*2)+1;
-        if (num == 1){
-            return new Duck();
-        } else {
-            return new Pigeon();
-        }
     }
 
     private String enterOrder(Customer c) {
@@ -79,16 +84,16 @@ public class LemonadeStandUX {
         System.out.println("Complete the order!");
         System.out.println("What kind of lemonade?? (Enter 1 for regular/2 for pink/3 for blue)");
         int enteredType = scan.nextInt();
-        if ((enteredType == 1 && c.getRegular()) || (enteredType == 2 && (c.getPink())) || (enteredType == 3 && (c.getBlue()))) {
+        if ((enteredType == 1 && c.getFlavor().equals("regular")) || (enteredType == 2 && (c.getFlavor().equals("pink"))) || (enteredType == 3 && (c.getFlavor().equals("blue")))) {
             numCorrect++;
             player.addPoints();
-        } else if ((enteredType == 2 && !(c.getPink()))) {
+        } else if ((enteredType == 2 && !(c.getFlavor().equals("pink")))) {
             error += "Why is it pink?? " + "\n";
             System.out.println();
-        } else if ((enteredType == 1 && !(c.getRegular()))) {
+        } else if ((enteredType == 1 && !(c.getFlavor().equals("regular")))) {
             error += "What happened to my flavor :( " + "\n";
             System.out.println();
-        } else if ((enteredType == 3 && !(c.getBlue()))) {
+        } else if ((enteredType == 3 && !(c.getFlavor().equals("blue")))) {
             error += "Why is it blue??" + "\n";
         } else {
             error += "That wasn't a yes or no..." + "\n";
@@ -98,47 +103,54 @@ public class LemonadeStandUX {
         int enteredCups = scan.nextInt();
         if (enteredCups == c.getOrder()[0]) {
             numCorrect++;
-        } else if (enteredCups > customer.getOrder()[0]){
-           error = "Uh oh! That was too many cups! " + "\n";
+            player.addPoints();
+        } else if (enteredCups > c.getOrder()[0]){
+            error = "Uh oh! That was too many cups! " + "\n";
             System.out.println();
         } else {
             error = "Uh oh! Not enough cups! " + "\n";
             System.out.println();
         }
+        inventory.updateInventory("cups", -enteredCups, player);
         System.out.println("How many lemons? ");
         int enteredLemons = scan.nextInt();
         if (enteredLemons == c.getOrder()[1]) {
             numCorrect++;
-        } else if (enteredLemons > customer.getOrder()[1]) {
+            player.addPoints();
+        } else if (enteredLemons > c.getOrder()[1]) {
             error += "Too many lemons... " + "\n";
             System.out.println();
         } else {
             error += "Not enough lemons! " + "\n";
             System.out.println();
         }
+        inventory.updateInventory("lemons", -enteredLemons, player);
         System.out.println("How many sugar cubes? ");
         int enteredSugar = scan.nextInt();
         if (enteredSugar == c.getOrder()[2]) {
             numCorrect++;
-        } else if (enteredSugar > customer.getOrder()[2]) {
+            player.addPoints();
+        } else if (enteredSugar > c.getOrder()[2]) {
             error += "Sugar rush! Way too sweet! " + "\n";
             System.out.println();
         } else {
             error += "So bitter.. Not enough sugar " + "\n";
             System.out.println();
         }
+        inventory.updateInventory("sugar cubes", -enteredSugar, player);
         System.out.println("How many ice cubes? ");
         int enteredIce = scan.nextInt();
         if (enteredIce == c.getOrder()[3]) {
             numCorrect++;
-        } else if (enteredIce > customer.getOrder()[3]) {
+            player.addPoints();
+        } else if (enteredIce > c.getOrder()[3]) {
             error += "B-brr.. Too cold! " + "\n";
             System.out.println();
         } else {
             error += "Ew! It's so warm.. " + "\n";
             System.out.println();
         }
-
+        inventory.updateInventory("ice cubes", -enteredIce, player);
         return error;
     }
 
@@ -155,8 +167,16 @@ public class LemonadeStandUX {
         }
     }
 
-    private boolean isGameOver(){
-        return false;
+    private void isGameOver(){
+        if (customerList.size() >= 3) {
+            System.out.println("Your customer history: ");
+            for (int i = 0; i < customerList.size(); i++) {
+                System.out.println(customerList.get(i).getType());
+            }
+            gameOver = true;
+        } else {
+            gameOver = false;
+        }
     }
 
     private void printStand(Customer c){

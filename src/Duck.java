@@ -1,5 +1,11 @@
 public class Duck extends Customer {
 
+
+    @Override
+    public String getType() {
+        return "Duck";
+    }
+
     @Override
     public void greeting(){
         duckStand();
