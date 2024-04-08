@@ -37,8 +37,8 @@ public class LemonadeStandUI {
     }
 
     public void menu(){
-        System.out.println("1. Talk with customer");
-        System.out.println("2. Start order");
+        System.out.println("1. Take customer order");
+        System.out.println("2. Enter order");
         System.out.println("3. Check inventory");
         System.out.println("4. Quit Game");
     }
