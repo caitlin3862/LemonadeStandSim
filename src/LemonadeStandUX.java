@@ -142,7 +142,7 @@ public class LemonadeStandUX {
         inventory.updateInventory(enteredType,"sugar cubes", -enteredSugar, player);
         System.out.println("How many ice cubes? ");
         int enteredIce = scan.nextInt();
-        inventory.updateInventory("ice cubes", -enteredIce, player);
+        inventory.updateInventory(enteredType,"ice cubes", -enteredIce, player);
         if (enteredIce == c.getOrder()[3]) {
             numCorrect++;
             player.addPoints();
