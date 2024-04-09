@@ -42,7 +42,6 @@ public class LemonadeStandUX {
     }
 
     public void play(Customer customer){
-        customerList.add(customer);
         customer.greeting();
         Utility.timedClearScreen(4000);
         while(!gameOver){
@@ -144,6 +143,7 @@ public class LemonadeStandUX {
         inventory.updateInventory("sugar cubes", -enteredSugar, player);
         System.out.println("How many ice cubes? ");
         int enteredIce = scan.nextInt();
+        inventory.updateInventory("ice cubes", -enteredIce, player);
         if (enteredIce == c.getOrder()[3]) {
             numCorrect++;
             player.addPoints();
@@ -154,7 +154,6 @@ public class LemonadeStandUX {
             error += "Ew! It's so warm.. " + "\n";
             System.out.println();
         }
-        inventory.updateInventory("ice cubes", -enteredIce, player);
         return error;
     }
 
