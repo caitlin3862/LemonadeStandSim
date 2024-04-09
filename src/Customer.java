@@ -1,8 +1,6 @@
 public class Customer {
     private int[] order;
-    //    private boolean pink;
-//    private boolean blue;
-//    private boolean regular;
+
     private String flavor;
 
     public Customer() {
@@ -11,9 +9,7 @@ public class Customer {
         order[1] = randNum(); // lemons
         order[2] = randNum(); // sugar cubes
         order[3] = randNum(); // ice cubes
-//        pink = false;
-//        blue = false;
-//        regular = false;
+
         flavor = pinkOrBlue();
     }
 
@@ -27,14 +23,6 @@ public class Customer {
     public String getFlavor() {
         return flavor;
     }
-
-//    public boolean getPink() {
-//        return pink;
-//    }
-//
-//    public boolean getBlue() { return blue; }
-//
-//    public boolean getRegular() { return regular; }
 
     public void order(){
         System.out.print("May I get "
